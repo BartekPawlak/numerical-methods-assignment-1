@@ -1,27 +1,39 @@
 #include "hadamard.h"
 
-
 using namespace std;
 
 int main(int argc, char** argv) {
 	
-		const int wiersze=2;
-		const int kolumny=2;
+		srand(time(NULL));
+		
+		const int m=2;
+		const int n=2;
 
-		double **m1;
-		m1=new double*[kolumny];
-		double **m2;
-		m2=new double*[kolumny];
+		double **A;
+		A=new double*[n];
+		double **B;
+		B=new double*[n];
+		double **AB;
+		AB=new double*[n];
 
-		for(int i=0;i<kolumny;i++)
+		for(int i=0;i<n;i++)
 		{
-				m1[i]=new double[wiersze];
-				m2[i]=new double[wiersze];
+				A[i]=new double[m];
+				B[i]=new double[m];
+				AB[i]=new double[m];
 		}
 
 
-		double c=hadamard(m1,m2,wiersze,kolumny);
-		cout<<"Iloczyn macierzy m1 i m2 jest rowny "<<c<<endl;
+		AB=hadamard(A,B,AB,m,n);
+		
+		for(int i=0;i<m;i++)
+			{
+				for(int j=0;j<n;j++)
+				{
+						cout<<AB[i][j]<<" ";
+				}
+				cout<<endl;
+			}
 		system("PAUSE");
   
   return 0;
